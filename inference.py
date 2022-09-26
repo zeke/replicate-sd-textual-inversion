@@ -6,7 +6,8 @@ from diffusers import StableDiffusionPipeline
 if __name__ == "__main__":
     model_dir = "textual_inversion_octocat"
     # prompt = "GitHub Octocat in the style of <octocat> with a cat head and octopus tentacles, practicing yoga in a seated pose on a flying carpet, psychedelic rainbow background, (((concept art, colorful, realistic proportions, symmetrical, 8K resolution)))"
-    prompt = "Woodblock print of a GitHub Octocat in the style of <octocat> with a cat head and octopus tentacles, riding a surfboard on the the Great Wave off Kanagawa, by Katsushika Hokusai"
+    # prompt = "Woodblock print of a GitHub Octocat in the style of <octocat> with a cat head and octopus tentacles, riding a surfboard on the the Great Wave off Kanagawa, by Katsushika Hokusai"
+    prompt = "A painting of a GitHub Octocat in the style of <octocat> by Olivia Bürki"
 
     pipe = StableDiffusionPipeline.from_pretrained(model_dir,torch_dtype=torch.float16).to("cuda")
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
     with open(os.path.join(output_dir, "prompt.txt"), "w") as f:
         f.write(prompt) 
     
-    for i in range(30):
+    for i in range(50):
         output_path = f"{output_dir}/{str(i).zfill(3)}.png"
         print(output_path)
 
