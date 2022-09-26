@@ -15,8 +15,9 @@ if __name__ == "__main__":
         # "A GitHub <octocat> with cat head and octopus body, wearing elegant designer fashion with mayan pattern and native style, aztec street fashion, gapmoe yandere grimdark, trending on pixiv fanbox, painted by greg rutkowski makoto shinkai takashi takeuchi studio ghibli, akihiko yoshida",
         # "A GitHub <octocat> with cat head and octopus body, 2d character design, vector art, digital art, portrait, 4 k, 8 k, sharp focus, smooth, illustration, concept art",
         # "a colorful comic noir illustration of an <octocat> with cat head and octopus body in new orleans by sachin teng,  pastel lighting, cinematic, depth of field, 8 k, high contrast, trending on artstation"
-        "highly detailed portrait of an astronaut <octocat> with cat head and octopus body, by Andy Warhol, 4k resolution, nier:automata inspired, bravely default inspired, vibrant but dreary but upflifting red, black and white color scheme!!! ((Space nebula background))",
-        "art deco octocat with cat head and octopus body in the style of <octocat>, art deco, vintage, retro label, 1920s"
+        # "highly detailed portrait of an astronaut <octocat> with cat head and octopus body, by Andy Warhol, 4k resolution, nier:automata inspired, bravely default inspired, vibrant but dreary but upflifting red, black and white color scheme!!! ((Space nebula background))",
+        # "art deco octocat with cat head and octopus body in the style of <octocat>, art deco, vintage, retro label, 1920s"
+        "a colorful comic illustration of an ((<octocat> with cat head and octopus body)) in comic hero pose, detailed city, aesthetic, captivating, concept art, hyper-detailed and intricate, realistic proportions, symmetrical, sharp focus, 8K resolution, trending on pixiv fanbox"
     ]
 
     print("Loading model...")
