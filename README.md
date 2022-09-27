@@ -1,21 +1,22 @@
-# Fine-tune your concepts and deploy on Replicate!
+# Stable Diffusion + Textual Inversion with Codespaces and Replicate
 
-[![Replicate](https://replicate.com/cjwbw/sd-textual-inversion-spyro-dragon/badge)](https://replicate.com/cjwbw/sd-textual-inversion-spyro-dragon)
+Finetune Stable Diffusion with your own concept using [textual inversion](https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion) and deploy it on Replicate!
 
-Finetune textual_inversion from https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion with your own concept and deploy on Replicate!
+* [Set up your environment](#set-up-your-environment)
+* [Fine-tune your concept](#fine-tune-your-concept)
+* [Test your trained concept locally](#test-your-trained-concept-locally)
+* [Deploy your trained concept on Replicate](#deploy-your-trained-concept-on-replicate)
 
-## Get started
+## Set up your environment
 
-### Install Cog and setup environment
-
-1. Clone this repo and install [Cog](https://github.com/replicate/cog#install) if you haven't already.
+1. Clone this repo and install [Cog](https://github.com/replicate/cog#install) if you haven't already. If you're using Codespaces, you can install Cog and all the required dependencies by running `curl https://replicate.github.io/codespaces/scripts/install-cog.sh | bash`
 
 2.  Run
     ```
     cog run bash
     ```
 
-    this will install the dependencies and set up the environment for running `textual_inversion`
+    to install the dependencies and set up the environment for running `textual_inversion`
 
 3. Run 
 
@@ -26,9 +27,8 @@ Finetune textual_inversion from https://github.com/huggingface/diffusers/tree/ma
     and paste your [HuggingFace token](https://huggingface.co/settings/tokens). You will also need to agree to the terms for accessing [CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4) on the HuggingFace website.
 
 
+## Fine-tune your concept
 
-
-### Fine-tuning your concept
 4. Prepare your 3-5 images for your concept (e.g. images in `./dragon`), and modify training parameters in `train` accordingly. You probably need to modify the following:
     ```
     --train_data_dir="dragon" 
@@ -43,31 +43,34 @@ Finetune textual_inversion from https://github.com/huggingface/diffusers/tree/ma
     ```
     The fine-tuning of your concept should be started now, it may take more than one hour to finish.
 
-### Test your trained concept locally
+## Test your trained concept locally
+
 5. Once the concept is trained, you can test it (still in the `cog run bash` env) using this command:
     ```
     python inference.py --model_dir <path_to_model__with_your_trained_concpet> --prompt <prompt_with_your_trained_concept> 
     ```
     The output should be saved at `<your_output_path>`
 
-### Deploy your trained concept on Replicate and enjoy the API
-6. If all works fine, it is time to push to your Replicate page so other people can try your cool concept!
+## Deploy your trained concept on Replicate
+
+6. If all works fine, it's time to push your model to Replicate so other people can try your cool concept!
 
     First, change the `model_id` in [`predict.py`](https://github.com/chenxwh/replicate-sd-textual-inversion/blob/main/predict.py#L15) with your trained concept (same as `output_dir` from `train`). 
     
-    Create a new [demo page](https://replicate.com/create). Follow the guide and then you will see the command to log in and push your model to your created page.
-    For instance, in a new terminal, 
+    Create a new model at [replicate.com/create](https://replicate.com/create). Follow the guide and then you will see the command to log in and push your model to your created page.
+    For instance, in a new terminal:
+
     ```
     cog login
     cog push r8.im/cjwbw/sd-textual-inversion-spyro-dragon
     ```
+
     You will be prompted to provide your Replicate token after `cog login` to get permission for pushing to the page you created.
 
-    Once your model is pushed, you can try it on the web demo like [this here](https://replicate.com/cjwbw/sd-textual-inversion-spyro-dragon) or use the API:
+    Once your model is pushed, you can run predictions on the website like [this here](https://replicate.com/cjwbw/sd-textual-inversion-spyro-dragon) or use the API:
 
     ```py
     import replicate
     model = replicate.models.get("cjwbw/sd-textual-inversion-spyro-dragon")
     output = model.predict(prompt="Golden Gate Bridge in style of <spyro-dragon>")
     ```
-
