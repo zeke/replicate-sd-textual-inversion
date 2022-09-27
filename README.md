@@ -1,6 +1,6 @@
 # Stable Diffusion + Textual Inversion with Codespaces and Replicate
 
-This demo repo can be used to fine-tune [Stable Diffusion](https://replicate.com/stability-ai/stable-diffusion) with your own concept using [textual inversion](https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion) and deploy it on Replicate.
+This demo repo illustrates how to run GitHub Codespaces to fine-tune [Stable Diffusion](https://replicate.com/stability-ai/stable-diffusion) with your own concept using [textual inversion](https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion), and deploy it to Replicate as a cloud API.
 
 🐲 For a live running example, check out [@chenxwh](https://github.com/chenxwh)'s [Spyro the Dragon model](https://replicate.com/cjwbw/sd-textual-inversion-spyro-dragon).
 
@@ -11,7 +11,10 @@ This demo repo can be used to fine-tune [Stable Diffusion](https://replicate.com
 
 ## Set up your environment
 
-1. Clone this repo and install [Cog](https://github.com/replicate/cog#install) if you haven't already. If you're using GitHub Codespaces, you can install Cog and all the required dependencies by running `curl https://replicate.github.io/codespaces/scripts/install-cog.sh | bash`
+1. Clone this repo and install [Cog](https://github.com/replicate/cog#install) if you haven't already. If you're using GitHub Codespaces, you can install Cog and all the required dependencies by running this command:
+    ```
+    curl https://replicate.github.io/codespaces/scripts/install-cog.sh | bash
+    ```
 
 2.  Run
     ```
@@ -49,7 +52,7 @@ This demo repo can be used to fine-tune [Stable Diffusion](https://replicate.com
 
 5. Once the concept is trained, you can test it (still in the `cog run bash` env) using this command:
     ```
-    python inference.py --model_dir <path_to_model__with_your_trained_concpet> --prompt <prompt_with_your_trained_concept> 
+    python inference.py --model_dir <path_to_model_with_your_trained_concept> --prompt <prompt_with_your_trained_concept> 
     ```
     The output should be saved at `<your_output_path>`
 
